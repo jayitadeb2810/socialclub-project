@@ -1,0 +1,122 @@
+.login {
+  height: 100vh;
+  background-color: var(--rightbackground);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.loginFormContainer {
+  background-color: white;
+  width: 35%;
+  border-radius: 8px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center;
+  justify-content: center; */
+}
+
+.loginFormContainer .titlebox {
+  font-size: 35px;
+  box-sizing: border-box;
+  width: 100%;
+  font-weight: 600;
+  text-align: left;
+  color: #fff;
+  user-select: none;
+  border-radius: 8px 8px 0 0;
+  background-color: var(--fa_blue);
+  padding: 2vmax;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2vh;
+  justify-content: center;
+}
+
+.loginForm {
+  padding: 0 2vmax;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginForm > input {
+  height: 2.5vmax;
+  width: 85%;
+
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin: 2vh 0;
+  font-size: 1.2rem;
+  padding: 2vmax;
+}
+
+input[type="password"]:focus,
+[type="email"]:focus {
+  border: 2px solid rgb(127, 124, 124);
+  outline: none;
+  /* border-style: none; */
+}
+/* .loginForm > input:focus {
+  border: 1px solid black;
+} */
+
+.link {
+  /* align-self: flex-end; */
+  text-decoration: none;
+  color: #1877f2;
+  font-size: 1rem;
+  margin: 1vmax;
+}
+.link:hover {
+  text-decoration: underline;
+}
+.loginForm .loginbutton {
+  border: none;
+  /* padding: 1vmax 14vmax; */
+  text-align: center;
+  margin: 15px 0;
+  width: 85%;
+  height: 8vmin;
+  outline: none;
+  cursor: pointer;
+  background-color: #1877f2;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.loginForm > hr {
+  border: none;
+  height: 1px;
+  background-color: #ccc;
+  margin: 1vmax 0;
+  width: 100%;
+}
+
+.signup_link {
+  margin-bottom: 3vh;
+}
+
+@media screen and (max-width: 600px) {
+  .loginForm {
+    width: 100%;
+  }
+
+  .loginForm > input {
+    padding: 4vw 8vw;
+    margin: 2vmax;
+    font: 100 1.2rem "Roboto", sans-serif;
+    margin: 4vw;
+  }
+
+  .loginForm > a {
+    align-self: center;
+  }
+}

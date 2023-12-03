@@ -1,0 +1,38 @@
+@import "Header.css";
+@import "Login.css";
+@import "Home.css";
+@import "Account.css";
+@import "NewPost.css";
+@import "Register.css";
+@import "UpdateProfile.css";
+@import "UpdatePassword.css";
+@import "Search.css";
+@import "NotFound.css";
+@import "Loader.css";
+@import "Post.css";
+@import "CommentCard.css";
+@import "ForgotPassword.css";
+@import "ResetPassword.css";
+@import "Messanger.css";
+@import "Message.css";
+@import "ChatOnline.css";
+@import "Conversation.css";
+
+:root {
+  --leftbackground: rgb(211, 211, 211);
+  --rightbackground: rgb(235, 236, 240);
+
+  --fa_blue: rgb(54, 88, 153);
+}
+
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+}

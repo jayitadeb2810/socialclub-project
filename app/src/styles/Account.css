@@ -1,0 +1,104 @@
+.account {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 25vw 1fr;
+  height: 100vh;
+}
+
+.accountright {
+  background-color: var(--rightbackground);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2vmax;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.accountleft {
+  padding: 2vmax 1vmin 2vmax 2vmax;
+  box-sizing: border-box;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--leftbackground);
+}
+
+.accountleftContent {
+  margin-left: auto;
+  display: flex;
+
+  flex-direction: column;
+  justify-content: start;
+}
+
+.accountleftContent {
+  margin-left: auto;
+}
+.accountleftContent img:hover {
+  transform: scale(1.1);
+}
+
+.accountleftContent img {
+  transition: all 0.5s;
+}
+
+.bioContainer {
+  padding: 1vmin 1vmin 1vmin 0;
+  width: 15vw;
+  height: auto;
+  word-break: break-word;
+  box-sizing: border-box;
+  font-size: smaller;
+  display: flex;
+  justify-content: center;
+}
+
+.accountleftContent > a {
+  color: rgb(73, 73, 73);
+  text-decoration: none;
+  font: 100 1.2rem "Roboto";
+  /* text-align: center; */
+  margin: 2vmax 0;
+  /* padding: 0.5vmax 1vmax; */
+  transition: all 0.5s;
+}
+
+.accountleftContent > a:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.253);
+}
+
+.accountleftContent button:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.253);
+}
+.accountleftContent button {
+  border: none;
+  cursor: pointer;
+  /* transition: all 0.5s; */
+  padding: 0 0.5vmax;
+  margin: 1vmax 0;
+  max-width: 10vw;
+  border-radius: 5%;
+}
+
+.accountleftContent .logoutButton {
+  background-color: rgb(61, 162, 205);
+  padding: 1vmax;
+}
+@media screen and (max-width: 600px) {
+  .account {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .accountright {
+    padding: 0;
+    min-height: 90vh;
+  }
+
+  .accountleft > a {
+    font: 100 1rem "Roboto";
+    margin-top: 6vw;
+  }
+}
