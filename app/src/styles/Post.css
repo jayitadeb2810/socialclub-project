@@ -104,8 +104,11 @@
   padding: 2vmax;
 }
 .commentForm {
+  width: 70%;
   display: flex;
   margin: 1vmax;
+  position: absolute;
+  bottom: 8%;
 }
 .commentForm > input {
   width: 100%;

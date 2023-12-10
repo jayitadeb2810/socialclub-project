@@ -9,6 +9,12 @@ export const likePost = (id) => async (dispatch) => {
     const { data } = await axios.get(
       `http://localhost:5000/api/J3/post/${id}`,
       { withCredentials: true }
+      // {
+      //   headers: {
+      //     Authorization: sessionStorage.getItem("token"),
+      //     "Content-Type": "application/json",
+      //   },
+      // }
     )
     dispatch({
       type: "likeSuccess",
@@ -33,12 +39,13 @@ export const addCommentOnPost = (id, comment) => async (dispatch) => {
       {
         comment,
       },
-      { withCredentials: true },
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
+      { withCredentials: true }
+      // {
+      //   headers: {
+      //     Authorization: sessionStorage.getItem("token"),
+      //     "Content-Type": "application/json",
+      //   },
+      // }
     )
     dispatch({
       type: "addCommentSuccess",
@@ -59,16 +66,17 @@ export const deleteCommentOnPost =
         type: "deleteCommentRequest",
       })
 
-      const { data } = await axios.post(
+      const { data } = await axios.delete(
         `http://localhost:5000/api/J3/post/comment/${id}`,
         {
-          commentId,
-        },
-        { withCredentials: true },
-        {
-          headers: {
-            "Content-Type": "application/json",
+          // headers: {
+          //   Authorization: sessionStorage.getItem("token"),
+          //   "Content-Type": "application/json",
+          // },
+          data: {
+            commentId,
           },
+          withCredentials: true,
         }
       )
       dispatch({
@@ -98,12 +106,13 @@ export const createNewPost =
           city,
           country,
         },
-        { withCredentials: true },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
+        { withCredentials: true }
+        // {
+        //   headers: {
+        //     Authorization: sessionStorage.getItem("token"),
+        //     "Content-Type": "application/json",
+        //   },
+        // }
       )
       dispatch({
         type: "newPostSuccess",
@@ -128,12 +137,13 @@ export const updatePost = (caption, id) => async (dispatch) => {
       {
         caption,
       },
-      { withCredentials: true },
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
+      { withCredentials: true }
+      // {
+      //   headers: {
+      //     Authorization: sessionStorage.getItem("token"),
+      //     "Content-Type": "application/json",
+      //   },
+      // }
     )
     dispatch({
       type: "updateCaptionSuccess",
@@ -156,6 +166,12 @@ export const deletePost = (id) => async (dispatch) => {
     const { data } = await axios.delete(
       `http://localhost:5000/api/J3/post/${id}`,
       { withCredentials: true }
+      // {
+      //   headers: {
+      //     Authorization: sessionStorage.getItem("token"),
+      //     "Content-Type": "application/json",
+      //   },
+      // }
     )
     dispatch({
       type: "deletePostSuccess",
@@ -180,11 +196,14 @@ export const forgotPassword = (email) => async (dispatch) => {
       {
         email,
       },
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
+      { withCredentials: true }
+
+      // {
+      //   headers: {
+      //     Authorization: sessionStorage.getItem("token"),
+      //     "Content-Type": "application/json",
+      //   },
+      // }
     )
 
     dispatch({
@@ -211,11 +230,13 @@ export const resetPassword =
         {
           password,
         },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
+        // {
+        //   headers: {
+        //     Authorization: sessionStorage.getItem("token"),
+        //     "Content-Type": "application/json",
+        //   },
+        // }
+        { withCredentials: true }
       )
 
       dispatch({

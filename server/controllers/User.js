@@ -33,6 +33,12 @@ export const register = async (req, res) => {
       httpOnly: true,
     }
 
+    // res.status(201).json({
+    //   success: true,
+    //   user,
+    //   token,
+    //   message: "New Account Created",
+    // })
     res.status(201).cookie("token", token, options).json({
       success: true,
       user,
@@ -78,16 +84,16 @@ export const login = async (req, res) => {
       httpOnly: true,
     }
 
-    res.status(200).json({
-      success: true,
-      user,
-      token,
-    })
-    // res.status(200).cookie("token", token, options).json({
+    // res.status(200).json({
     //   success: true,
     //   user,
     //   token,
     // })
+    res.status(200).cookie("token", token, options).json({
+      success: true,
+      user,
+      token,
+    })
   } catch (error) {
     res.status(500).json({
       success: false,

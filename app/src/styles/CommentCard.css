@@ -1,10 +1,15 @@
 .commentUser {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  /* align-items: center; */
   color: rgba(0, 0, 0, 0.507);
 }
 
-.commentUser > a {
+.avatarnameWrapper {
+  display: flex;
+}
+
+.avatarnameWrapper > a {
   display: flex;
   text-decoration: none;
   color: rgb(0, 0, 0);
@@ -12,7 +17,7 @@
   align-self: flex-start;
   transition: all 0.5s;
 }
-.commentUser img {
+.avatarnameWrapper img {
   height: 3vmax;
   width: 3vmax;
   margin: 1vmax;
@@ -20,11 +25,23 @@
   border: 3px solid rgb(255, 201, 201);
 }
 
-.commentUser > a:hover {
+.avatarnameWrapper > a:hover {
   transform: translateY(-10px);
 }
 
-.commentUser > button {
+.commentdeletewrapper {
+  display: flex;
+}
+.comment {
+  max-width: 60%;
+  height: auto;
+  word-break: break-word;
+  box-sizing: border-box;
+  font-weight: 150;
+  margin-left: 5vmax;
+}
+
+.commentdeletewrapper > button {
   color: rgb(50, 49, 49);
   position: absolute;
   right: 2vmax;

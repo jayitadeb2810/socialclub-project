@@ -5,15 +5,15 @@
 }
 
 .chatMenu {
-  flex: 3.5;
+  flex: 3;
 }
 
-.chatMenuInput {
+/* .chatMenuInput {
   width: 90%;
   padding: 10px 0;
   border: none;
   border-bottom: 1px solid gray;
-}
+} */
 
 .chatBox {
   flex: 5.5;
@@ -46,13 +46,15 @@
 }
 
 .chatSubmitButton {
-  width: 70px;
-  height: 40px;
+  /* width: 70px; */
+  /* height: 40px; */
   border: none;
-  border-radius: 5px;
+  border-radius: 50%;
   cursor: pointer;
   background-color: teal;
   color: white;
+  padding: 8px;
+  margin-right: 12%;
 }
 
 .chatOnline {
@@ -62,15 +64,15 @@
 .chatMenuWrapper,
 .chatBoxWrapper,
 .chatOnlineWrapper {
-  padding: 10px;
+  padding: 10px 10px 10px 30px;
   height: 100%;
 }
 
 .noConversationText {
   position: absolute;
-  top: 10%;
-  font-size: 50px;
-  color: rgb(224, 220, 220);
+  top: 35%;
+  font-size: 40px;
+  color: rgb(154, 147, 147);
   cursor: default;
 }
 

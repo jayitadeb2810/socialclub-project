@@ -36,6 +36,13 @@ export const getConversationOfTwoUser = async (req, res) => {
         $all: [req.params.firstUserId, req.params.secondUserId],
       },
     })
+
+    if (!conversation) {
+      return res.status(201).json({
+        success: false,
+        message: "NO conversation found",
+      })
+    }
     res.status(200).json(conversation)
   } catch (err) {
     res.status(500).json(err)

@@ -5,6 +5,8 @@ import { useContext, useEffect, useRef, useState } from "react"
 import axios from "axios"
 import { io } from "socket.io-client"
 import { useSelector } from "react-redux"
+import { Typography } from "@mui/material"
+import SendIcon from "@mui/icons-material/Send"
 
 const Messenger = () => {
   const [conversations, setConversations] = useState([])
@@ -13,6 +15,7 @@ const Messenger = () => {
   const [newMessage, setNewMessage] = useState("")
   const [arrivalMessage, setArrivalMessage] = useState(null)
   const [onlineUsers, setOnlineUsers] = useState([])
+  const [currentFriend, setCurrentFriend] = useState([])
   const socket = useRef()
   const { user, loading: userLoading } = useSelector(
     (state) => state.user
@@ -55,6 +58,12 @@ const Messenger = () => {
         const res = await axios.get(
           "http://localhost:5000/api/conversations/" + user._id,
           { withCredentials: true }
+          // {
+          //   headers: {
+          //     Authorization: sessionStorage.getItem("token"),
+          //     "Content-Type": "application/json",
+          //   },
+          // }
         )
         setConversations(res.data)
       } catch (err) {
@@ -64,12 +73,20 @@ const Messenger = () => {
     getConversations()
   }, [user._id])
 
+  console.log(conversations)
+
   useEffect(() => {
     const getMessages = async () => {
       try {
         const res = await axios.get(
           "http://localhost:5000/api/messages/" + currentChat?._id,
           { withCredentials: true }
+          // {
+          //   headers: {
+          //     Authorization: sessionStorage.getItem("token"),
+          //     "Content-Type": "application/json",
+          //   },
+          // }
         )
         setMessages(res.data)
       } catch (err) {
@@ -100,7 +117,15 @@ const Messenger = () => {
     try {
       const res = await axios.post(
         "http://localhost:5000/api/messages",
-        message,
+        {
+          message,
+        },
+        // {
+        //   headers: {
+        //     Authorization: sessionStorage.getItem("token"),
+        //     "Content-Type": "application/json",
+        //   },
+        // }
         { withCredentials: true }
       )
       setMessages([...messages, res.data])
@@ -114,20 +139,44 @@ const Messenger = () => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" })
   }, [messages])
 
+  console.log(currentChat)
+
   return (
     <>
       <div className="messenger">
         <div className="chatMenu">
           <div className="chatMenuWrapper">
-            <input
-              placeholder="Search for chats"
-              className="chatMenuInput"
-            />
-            {conversations.map((c, index) => (
-              <div key={index} onClick={() => setCurrentChat(c)}>
-                <Conversation conversation={c} currentUser={user} />
+            <Typography
+              style={{
+                fontSize: "18px",
+                fontWeight: "500",
+                color: "grey",
+              }}
+            >
+              Conversation Menu
+            </Typography>
+            {conversations.length !== 0 ? (
+              <>
+                {conversations.map((c, index) => (
+                  <div key={index} onClick={() => setCurrentChat(c)}>
+                    <Conversation
+                      conversation={c}
+                      currentUser={user}
+                    />
+                  </div>
+                ))}
+              </>
+            ) : (
+              <div
+                style={{
+                  position: "absolute",
+                  top: "20%",
+                  color: "gray",
+                }}
+              >
+                'no conversation yet'
               </div>
-            ))}
+            )}
           </div>
         </div>
         <div className="chatBox">
@@ -135,11 +184,15 @@ const Messenger = () => {
             {currentChat ? (
               <>
                 <div className="chatBoxTop">
-                  {messages.map((m) => (
-                    <div ref={scrollRef}>
+                  {messages.map((m, index) => (
+                    <div key={index} ref={scrollRef}>
                       <Message
                         message={m}
                         own={m.sender === user._id}
+                        user={user}
+                        currentChat={currentChat}
+                        setMessages={setMessages}
+                        currentFriend={currentFriend}
                       />
                     </div>
                   ))}
@@ -148,30 +201,40 @@ const Messenger = () => {
                   <textarea
                     className="chatMessageInput"
                     placeholder="write something..."
-                    onChange={(e) => setNewMessage(e.target.value)}
                     value={newMessage}
+                    onChange={(e) => setNewMessage(e.target.value)}
                   ></textarea>
                   <button
                     className="chatSubmitButton"
                     onClick={handleSubmit}
                   >
-                    Send
+                    <SendIcon />
                   </button>
                 </div>
               </>
             ) : (
               <span className="noConversationText">
-                Open a Chat to start a Conversation...
+                Open a Conversation to start a Chat...
               </span>
             )}
           </div>
         </div>
         <div className="chatOnline">
           <div className="chatOnlineWrapper">
+            <Typography
+              style={{
+                fontSize: "18px",
+                fontWeight: "500",
+                color: "grey",
+              }}
+            >
+              All Friends
+            </Typography>
             <ChatOnline
               onlineUsers={onlineUsers}
               currentId={user._id}
               setCurrentChat={setCurrentChat}
+              setcurrentFriend={setCurrentFriend}
             />
           </div>
         </div>

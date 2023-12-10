@@ -1,24 +1,19 @@
 import express from "express"
-import Conversation from "../models/Conversation.js"
 import {
   createNewConversation,
   getConversationOfaUser,
   getConversationOfTwoUser,
 } from "../controllers/Conversation.js"
+import requireAuth from "../middlewares/requireAuth.js"
 
 const router = express.Router()
 
-// router.route("/").post(requireAuth, createNewConversation)
-router.route("/").post(createNewConversation)
+router.route("/").post(requireAuth, createNewConversation)
 
-// router.route("/:userId").get(requireAuth, getConversationOfaUser)
-router.route("/:userId").get(getConversationOfaUser)
+router.route("/:userId").get(requireAuth, getConversationOfaUser)
 
-// router
-//   .route("/find/:firstUserId/:secondUserId")
-//   .get(requireAuth, getConversationOfTwoUser)
 router
   .route("/find/:firstUserId/:secondUserId")
-  .get(getConversationOfTwoUser)
+  .get(requireAuth, getConversationOfTwoUser)
 
 export default router

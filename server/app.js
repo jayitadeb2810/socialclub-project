@@ -1,6 +1,7 @@
 import express from "express"
 import cors from "cors"
 import cookieParser from "cookie-parser"
+import path from "path"
 import postRoutes from "./routes/Post.js"
 import userRoutes from "./routes/User.js"
 import conversationRoutes from "./routes/Conversation.js"
@@ -25,8 +26,10 @@ app.use("/api/J3", userRoutes)
 app.use("/api/conversations", conversationRoutes)
 app.use("/api/messages", messageRoutes)
 
-app.get("/", (req, res) => {
-  res.send("Hello World!")
+app.use(express.static(path.join(__dirname, "../app/dist")))
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../app/dist/index.html"))
 })
 
 export default app

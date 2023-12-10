@@ -195,20 +195,6 @@ const Post = ({
             {comments.length} Comments
           </Typography>
 
-          <form className="commentForm" onSubmit={addCommentHandler}>
-            <input
-              type="text"
-              value={commentValue}
-              onChange={(e) => setCommentValue(e.target.value)}
-              placeholder="Write a comment"
-              required
-            />
-
-            <Button type="submit" variant="contained">
-              Add
-            </Button>
-          </form>
-
           {comments.length > 0 ? (
             comments.map((item) => (
               <CommentCard
@@ -225,6 +211,19 @@ const Post = ({
           ) : (
             <Typography>No comment yet</Typography>
           )}
+          <form className="commentForm" onSubmit={addCommentHandler}>
+            <input
+              type="text"
+              value={commentValue}
+              onChange={(e) => setCommentValue(e.target.value)}
+              placeholder="Write a comment"
+              required
+            />
+
+            <Button type="submit" variant="contained">
+              Add
+            </Button>
+          </form>
         </div>
       </Dialog>
 

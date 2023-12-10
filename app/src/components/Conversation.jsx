@@ -15,6 +15,12 @@ export default function Conversation({ conversation, currentUser }) {
       try {
         const res = await axios(
           "http://localhost:5000/api/J3/user?userId=" + friendId,
+          // {
+          //   headers: {
+          //     Authorization: sessionStorage.getItem("token"),
+          //     "Content-Type": "application/json",
+          //   },
+          // }
           {
             withCredentials: true,
           }

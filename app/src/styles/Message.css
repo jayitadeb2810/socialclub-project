@@ -22,6 +22,9 @@
   background-color: #1877f2;
   color: white;
   max-width: 300px;
+  height: auto;
+  word-break: break-word;
+  box-sizing: border-box;
 }
 
 .messageBottom {
@@ -36,4 +39,15 @@
 .message.own .messageText {
   background-color: rgb(245, 241, 241);
   color: black;
+  cursor: pointer;
+}
+
+.DialogBoxDelete {
+  min-width: 200px;
+  height: 15vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* text-align: center; */
+  /* padding: 2vmax; */
 }

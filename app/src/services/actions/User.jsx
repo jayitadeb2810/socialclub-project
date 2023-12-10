@@ -9,12 +9,12 @@ export const loginUser = (email, password) => async (dispatch) => {
     const { data } = await axios.post(
       "http://localhost:5000/api/J3/login",
       { email, password },
-      { withCredentials: true },
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
+      { withCredentials: true }
+      // {
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      // }
     )
     console.log(data)
     sessionStorage.setItem("token", data?.token)
@@ -39,13 +39,20 @@ export const loadUser = () => async (dispatch) => {
     const { data } = await axios.get(
       "http://localhost:5000/api/J3/me",
       { withCredentials: true }
+      // {
+      //   headers: {
+      //     Authorization: sessionStorage.getItem("token"),
+      //     "Content-Type": "application/json",
+      //   },
+      // }
     )
-
     dispatch({
       type: "LoadUserSuccess",
       payload: data.user,
     })
   } catch (error) {
+    // console.log(sessionStorage.getItem("token"))
+
     dispatch({
       type: "LoadUserFailure",
       payload: error.response.data.message,
@@ -61,12 +68,19 @@ export const getFollowingPosts = () => async (dispatch) => {
 
     const { data } = await axios.get(
       "http://localhost:5000/api/J3/posts",
-      {
-        params: {
-          token: sessionStorage.getItem("token"),
-        },
-      },
+
+      // {
+      //   params: {
+      //     token: sessionStorage.getItem("token"),
+      //   },
+      // },
       { withCredentials: true }
+      // {
+      //   headers: {
+      //     Authorization: sessionStorage.getItem("token"),
+      //     "Content-Type": "application/json",
+      //   },
+      // }
     )
     dispatch({
       type: "postOfFollowingSuccess",
@@ -89,6 +103,12 @@ export const getMyPosts = () => async (dispatch) => {
     const { data } = await axios.get(
       "http://localhost:5000/api/J3/my/posts",
       { withCredentials: true }
+      // {
+      //   headers: {
+      //     Authorization: sessionStorage.getItem("token"),
+      //     "Content-Type": "application/json",
+      //   },
+      // }
     )
     dispatch({
       type: "myPostsSuccess",
@@ -111,6 +131,12 @@ export const getAllUsers = () => async (dispatch) => {
     const { data } = await axios.get(
       `http://localhost:5000/api/J3/users`,
       { withCredentials: true }
+      // {
+      //   headers: {
+      //     Authorization: sessionStorage.getItem("token"),
+      //     "Content-Type": "application/json",
+      //   },
+      // }
     )
 
     dispatch({
@@ -133,6 +159,12 @@ export const getUsersByName = (name) => async (dispatch) => {
     const { data } = await axios.get(
       `http://localhost:5000/api/J3/usersbyname?name=${name}`,
       { withCredentials: true }
+      // {
+      //   headers: {
+      //     Authorization: sessionStorage.getItem("token"),
+      //     "Content-Type": "application/json",
+      //   },
+      // }
     )
     dispatch({
       type: "UsersByNameSuccess",
@@ -152,9 +184,18 @@ export const logoutUser = () => async (dispatch) => {
       type: "LogoutUserRequest",
     })
 
-    await axios.get("http://localhost:5000/api/J3/logout", {
-      withCredentials: true,
-    })
+    await axios.get(
+      "http://localhost:5000/api/J3/logout",
+      {
+        withCredentials: true,
+      }
+      // {
+      //   headers: {
+      //     Authorization: sessionStorage.getItem("token"),
+      //     "Content-Type": "application/json",
+      //   },
+      // }
+    )
 
     dispatch({
       type: "LogoutUserSuccess",
@@ -177,13 +218,15 @@ export const registerUser =
       const { data } = await axios.post(
         "http://localhost:5000/api/J3/register",
         { name, email, password },
-        { withCredentials: true },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
+        { withCredentials: true }
+        // {
+        //   headers: {
+        //     Authorization: sessionStorage.getItem("token"),
+        //     "Content-Type": "application/json",
+        //   },
+        // }
       )
+      sessionStorage.setItem("token", data?.token)
 
       dispatch({
         type: "RegisterSuccess",
@@ -207,12 +250,13 @@ export const updateProfile =
       const { data } = await axios.put(
         "http://localhost:5000/api/J3/update/profile",
         { name, email, avatar, bio },
-        { withCredentials: true },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
+        { withCredentials: true }
+        // {
+        //   headers: {
+        //     Authorization: sessionStorage.getItem("token"),
+        //     "Content-Type": "application/json",
+        //   },
+        // }
       )
 
       dispatch({
@@ -237,12 +281,13 @@ export const updatePassword =
       const { data } = await axios.put(
         "http://localhost:5000/api/J3/update/password",
         { oldPassword, newPassword },
-        { withCredentials: true },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
+        { withCredentials: true }
+        // {
+        //   headers: {
+        //     Authorization: sessionStorage.getItem("token"),
+        //     "Content-Type": "application/json",
+        //   },
+        // }
       )
 
       dispatch({
@@ -288,6 +333,12 @@ export const getUserPosts = (id) => async (dispatch) => {
     const { data } = await axios.get(
       `http://localhost:5000/api/J3/userposts/${id}`,
       { withCredentials: true }
+      // {
+      //   headers: {
+      //     Authorization: sessionStorage.getItem("token"),
+      //     "Content-Type": "application/json",
+      //   },
+      // }
     )
     dispatch({
       type: "userPostsSuccess",
@@ -310,6 +361,12 @@ export const getUserProfile = (id) => async (dispatch) => {
     const { data } = await axios.get(
       `http://localhost:5000/api/J3/user/${id}`,
       { withCredentials: true }
+      // {
+      //   headers: {
+      //     Authorization: sessionStorage.getItem("token"),
+      //     "Content-Type": "application/json",
+      //   },
+      // }
     )
     dispatch({
       type: "userProfileSuccess",
@@ -332,6 +389,12 @@ export const followAndUnfollowUser = (id) => async (dispatch) => {
     const { data } = await axios.get(
       `http://localhost:5000/api/J3/follow/${id}`,
       { withCredentials: true }
+      // {
+      //   headers: {
+      //     Authorization: sessionStorage.getItem("token"),
+      //     "Content-Type": "application/json",
+      //   },
+      // }
     )
     dispatch({
       type: "followUserSuccess",

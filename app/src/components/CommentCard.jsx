@@ -33,27 +33,34 @@ const CommentCard = ({
 
   return (
     <div className="commentUser">
-      <Link to={`/user/${userId}`}>
-        <img src={avatar} alt={name} />
-        <Typography
-          style={{ minWidth: "6vmax", marginRight: "1vmin" }}
-        >
-          {name}
-        </Typography>
-      </Link>
-      <Typography>{comment}</Typography>
-
-      {isAccount ? (
-        <Button onClick={deleteCommentHandle}>
-          <Typography>DELETE</Typography>
-        </Button>
-      ) : userId === user._id ? (
-        <Button onClick={deleteCommentHandle}>
-          <Typography style={{ fontSize: "2vh", fontWeight: "700" }}>
-            DELETE
+      <div className="avatarnameWrapper">
+        <Link to={`/user/${userId}`}>
+          <img src={avatar} alt={name} />
+          <Typography
+            style={{ minWidth: "6vmax", marginRight: "1vmin" }}
+          >
+            {name}
           </Typography>
-        </Button>
-      ) : null}
+        </Link>
+      </div>
+
+      <div className="commentdeletewrapper">
+        <div className="comment">{comment}</div>
+
+        {isAccount ? (
+          <Button onClick={deleteCommentHandle}>
+            <Typography>DELETE</Typography>
+          </Button>
+        ) : userId === user._id ? (
+          <Button onClick={deleteCommentHandle}>
+            <Typography
+              style={{ fontSize: "2vh", fontWeight: "700" }}
+            >
+              DELETE
+            </Typography>
+          </Button>
+        ) : null}
+      </div>
     </div>
   )
 }

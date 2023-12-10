@@ -13,8 +13,6 @@ export const createPost = async (req, res) => {
       caption: req.body.caption,
       location: { city: req.body.city, country: req.body.country },
       image: {
-        // public_id: "request.body.public_id",
-        // url: "request.body.url",
         public_id: myCloud.public_id,
         url: myCloud.secure_url,
       },
@@ -227,6 +225,7 @@ export const commentOnPost = async (req, res) => {
 
 export const deleteComment = async (req, res) => {
   try {
+    console.log(req)
     const post = await Post.findById(req.params.id)
 
     if (!post) {
@@ -239,6 +238,7 @@ export const deleteComment = async (req, res) => {
     // Checking If owner wants to delete
 
     if (post.owner.toString() === req.user._id.toString()) {
+      // console.log(req.data.commentId)
       if (req.body.commentId === undefined) {
         return res.status(400).json({
           success: false,
