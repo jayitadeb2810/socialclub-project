@@ -39,5 +39,9 @@
     "vite": "^4.4.5",
     "vitest": "^0.34.6"
   },
-  "proxy": "http://localhost:5000"
+  "main": "vite.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
