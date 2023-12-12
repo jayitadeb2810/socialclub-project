@@ -7,6 +7,7 @@
     "start": "node server.js",
     "develop": "concurrently \"cd server && npm run watch\" \"cd app && npm run dev\"",
     "install": "npm i && cd ../app && npm i --production=false",
+    "render-postbuild": "npm install --prefix app --production=false && cd /opt/render/project/src/app && npm run build",
     "build": "cd ../app && npm run build",
     "render-build": "npm install && npm run build"
   },
