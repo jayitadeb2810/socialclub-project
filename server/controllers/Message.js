@@ -3,7 +3,7 @@ import Message from "../models/Message.js"
 //add
 
 export const addNewMessage = async (req, res) => {
-  console.log(req)
+  // console.log(req)
   const newMessage = new Message(req.body.message)
 
   try {

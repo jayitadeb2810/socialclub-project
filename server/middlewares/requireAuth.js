@@ -7,7 +7,7 @@ const requireAuth = async (req, res, next) => {
     const { token } = req.cookies
 
     // console.log(req.headers)
-    console.log("token", token)
+    // console.log("token", token)
     if (!token) {
       return res.status(401).json({
         message: "Please login first",
@@ -15,7 +15,7 @@ const requireAuth = async (req, res, next) => {
     }
 
     const decoded = await jwt.verify(token, process.env.SECRET_KEY)
-    console.log(decoded)
+    // console.log(decoded)
     req.user = await User.findById(decoded._id)
 
     next()

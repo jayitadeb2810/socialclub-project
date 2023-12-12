@@ -31,7 +31,7 @@ cloudinary.config({
 
 io.on("connection", (socket) => {
   //when ceonnect
-  console.log("a user connected.")
+  // console.log("a user connected.")
   SocketServer(socket)
 })
 

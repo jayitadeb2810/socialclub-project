@@ -1,11 +1,19 @@
 import express from "express"
 import cors from "cors"
 import cookieParser from "cookie-parser"
-import path from "path"
 import postRoutes from "./routes/Post.js"
 import userRoutes from "./routes/User.js"
 import conversationRoutes from "./routes/Conversation.js"
 import messageRoutes from "./routes/Message.js"
+import path from "path"
+import { fileURLToPath } from "url"
+
+const getDirName = function (moduleUrl) {
+  const filename = fileURLToPath(moduleUrl)
+  return path.dirname(filename)
+}
+
+const dirName = getDirName(import.meta.url)
 
 const app = express()
 
@@ -26,10 +34,10 @@ app.use("/api/J3", userRoutes)
 app.use("/api/conversations", conversationRoutes)
 app.use("/api/messages", messageRoutes)
 
-app.use(express.static(path.join(__dirname, "../app/dist")))
+app.use(express.static(path.join(dirName, "../app/dist")))
 
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../app/dist/index.html"))
+  res.sendFile(path.resolve(dirName, "../app/dist/index.html"))
 })
 
 export default app

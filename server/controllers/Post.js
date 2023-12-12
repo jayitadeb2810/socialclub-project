@@ -225,7 +225,7 @@ export const commentOnPost = async (req, res) => {
 
 export const deleteComment = async (req, res) => {
   try {
-    console.log(req)
+    // console.log(req)
     const post = await Post.findById(req.params.id)
 
     if (!post) {
