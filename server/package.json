@@ -8,7 +8,8 @@
     "develop": "concurrently \"cd server && npm run watch\" \"cd app && npm run dev\"",
     "render-postbuild": "npm install --prefix app --production=false && cd /opt/render/project/src/app && npm run build",
     "build": "cd ../app && npm run build",
-    "render-build": "npm install && npm run build"
+    "render-build": "npm install && npm run build",
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "type": "module",

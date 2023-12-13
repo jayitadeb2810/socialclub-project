@@ -1,4 +1,4 @@
-import axios from "axios"
+import axiosConfig from "../../config/axiosConfig.jsx"
 
 export const loginUser = (email, password) => async (dispatch) => {
   try {
@@ -6,8 +6,8 @@ export const loginUser = (email, password) => async (dispatch) => {
       type: "LoginRequest",
     })
 
-    const { data } = await axios.post(
-      "http://localhost:5000/api/J3/login",
+    const { data } = await axiosConfig.post(
+      "/api/J3/login",
       { email, password },
       { withCredentials: true }
       // {
@@ -36,8 +36,8 @@ export const loadUser = () => async (dispatch) => {
       type: "LoadUserRequest",
     })
 
-    const { data } = await axios.get(
-      "http://localhost:5000/api/J3/me",
+    const { data } = await axiosConfig.get(
+      "/api/J3/me",
       { withCredentials: true }
       // {
       //   headers: {
@@ -66,8 +66,8 @@ export const getFollowingPosts = () => async (dispatch) => {
       type: "postOfFollowingRequest",
     })
 
-    const { data } = await axios.get(
-      "http://localhost:5000/api/J3/posts",
+    const { data } = await axiosConfig.get(
+      "/api/J3/posts",
 
       // {
       //   params: {
@@ -100,8 +100,8 @@ export const getMyPosts = () => async (dispatch) => {
       type: "myPostsRequest",
     })
 
-    const { data } = await axios.get(
-      "http://localhost:5000/api/J3/my/posts",
+    const { data } = await axiosConfig.get(
+      "/api/J3/my/posts",
       { withCredentials: true }
       // {
       //   headers: {
@@ -128,8 +128,8 @@ export const getAllUsers = () => async (dispatch) => {
       type: "allUsersRequest",
     })
 
-    const { data } = await axios.get(
-      `http://localhost:5000/api/J3/users`,
+    const { data } = await axiosConfig.get(
+      `/api/J3/users`,
       { withCredentials: true }
       // {
       //   headers: {
@@ -156,8 +156,8 @@ export const getUsersByName = (name) => async (dispatch) => {
       type: "UsersByNameRequest",
     })
 
-    const { data } = await axios.get(
-      `http://localhost:5000/api/J3/usersbyname?name=${name}`,
+    const { data } = await axiosConfig.get(
+      `/api/J3/usersbyname?name=${name}`,
       { withCredentials: true }
       // {
       //   headers: {
@@ -184,8 +184,8 @@ export const logoutUser = () => async (dispatch) => {
       type: "LogoutUserRequest",
     })
 
-    await axios.get(
-      "http://localhost:5000/api/J3/logout",
+    await axiosConfig.get(
+      "/api/J3/logout",
       {
         withCredentials: true,
       }
@@ -215,8 +215,8 @@ export const registerUser =
         type: "RegisterRequest",
       })
 
-      const { data } = await axios.post(
-        "http://localhost:5000/api/J3/register",
+      const { data } = await axiosConfig.post(
+        "/api/J3/register",
         { name, email, password },
         { withCredentials: true }
         // {
@@ -247,8 +247,8 @@ export const updateProfile =
         type: "updateProfileRequest",
       })
 
-      const { data } = await axios.put(
-        "http://localhost:5000/api/J3/update/profile",
+      const { data } = await axiosConfig.put(
+        "/api/J3/update/profile",
         { name, email, avatar, bio },
         { withCredentials: true }
         // {
@@ -278,8 +278,8 @@ export const updatePassword =
         type: "updatePasswordRequest",
       })
 
-      const { data } = await axios.put(
-        "http://localhost:5000/api/J3/update/password",
+      const { data } = await axiosConfig.put(
+        "/api/J3/update/password",
         { oldPassword, newPassword },
         { withCredentials: true }
         // {
@@ -309,7 +309,7 @@ export const updatePassword =
 //     })
 
 //     const { data } = await axios.delete(
-//       "http://localhost:5000/api/J3/delete/me"
+//       "/api/J3/delete/me"
 //     )
 
 //     dispatch({
@@ -330,8 +330,8 @@ export const getUserPosts = (id) => async (dispatch) => {
       type: "userPostsRequest",
     })
 
-    const { data } = await axios.get(
-      `http://localhost:5000/api/J3/userposts/${id}`,
+    const { data } = await axiosConfig.get(
+      `/api/J3/userposts/${id}`,
       { withCredentials: true }
       // {
       //   headers: {
@@ -358,8 +358,8 @@ export const getUserProfile = (id) => async (dispatch) => {
       type: "userProfileRequest",
     })
 
-    const { data } = await axios.get(
-      `http://localhost:5000/api/J3/user/${id}`,
+    const { data } = await axiosConfig.get(
+      `/api/J3/user/${id}`,
       { withCredentials: true }
       // {
       //   headers: {
@@ -386,8 +386,8 @@ export const followAndUnfollowUser = (id) => async (dispatch) => {
       type: "followUserRequest",
     })
 
-    const { data } = await axios.get(
-      `http://localhost:5000/api/J3/follow/${id}`,
+    const { data } = await axiosConfig.get(
+      `/api/J3/follow/${id}`,
       { withCredentials: true }
       // {
       //   headers: {

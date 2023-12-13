@@ -1,6 +1,6 @@
-import axios from "axios"
 import { useEffect, useState } from "react"
 import noAvatar from "../assets/noAvatar.webp"
+import axiosConfig from "../config/axiosConfig.jsx"
 import { Dialog } from "@mui/material"
 
 const ChatOnline = ({
@@ -14,8 +14,8 @@ const ChatOnline = ({
   useEffect(() => {
     const getFriends = async () => {
       try {
-        const res = await axios.get(
-          "http://localhost:5000/api/J3/friends/" + currentId,
+        const res = await axiosConfig.get(
+          "/api/J3/friends/" + currentId,
           // {
           //   headers: {
           //     Authorization: sessionStorage.getItem("token"),
@@ -46,8 +46,8 @@ const ChatOnline = ({
 
   const handleClick = async (user) => {
     try {
-      const res = await axios.get(
-        `http://localhost:5000/api/conversations/find/${currentId}/${user._id}`,
+      const res = await axiosConfig.get(
+        `/api/conversations/find/${currentId}/${user._id}`,
 
         { withCredentials: true }
         // {
@@ -61,8 +61,8 @@ const ChatOnline = ({
 
       if (res.data.success === false) {
         try {
-          await axios.post(
-            `http://localhost:5000/api/conversations`,
+          await axiosConfig.post(
+            `/api/conversations`,
 
             {
               senderId: currentId,
@@ -89,8 +89,8 @@ const ChatOnline = ({
     }
 
     try {
-      const res = await axios.get(
-        `http://localhost:5000/api/J3/user/${user._id}`,
+      const res = await axiosConfig.get(
+        `/api/J3/user/${user._id}`,
         { withCredentials: true }
         // {
         //   headers: {

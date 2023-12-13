@@ -1,6 +1,7 @@
 import { format } from "timeago.js"
 import noAvatar from "../assets/noAvatar.webp"
 import axios from "axios"
+import axiosConfig from "../config/axiosConfig.jsx"
 import { useState } from "react"
 import { Button, Dialog, Typography } from "@mui/material"
 
@@ -16,8 +17,8 @@ const Message = ({
 
   const deleteHandle = async (id) => {
     try {
-      const { data } = await axios.delete(
-        `http://localhost:5000/api/messages/${id}`,
+      const { data } = await axiosConfig.delete(
+        `/api/messages/${id}`,
         // headers: {
         //   Authorization: sessionStorage.getItem("token"),
         //   "Content-Type": "application/json",
@@ -27,8 +28,8 @@ const Message = ({
       )
 
       try {
-        const res = await axios.get(
-          "http://localhost:5000/api/messages/" + currentChat?._id,
+        const res = await axiosConfig.get(
+          "/api/messages/" + currentChat?._id,
           { withCredentials: true }
           // {
           //   headers: {

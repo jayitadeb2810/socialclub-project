@@ -1,4 +1,5 @@
 import axios from "axios"
+import axiosConfig from "../config/axiosConfig.jsx"
 import { useEffect, useState } from "react"
 import noAvatar from "../assets/noAvatar.webp"
 
@@ -13,8 +14,8 @@ export default function Conversation({ conversation, currentUser }) {
 
     const getUser = async () => {
       try {
-        const res = await axios(
-          "http://localhost:5000/api/J3/user?userId=" + friendId,
+        const res = await axiosConfig(
+          "/api/J3/user?userId=" + friendId,
           // {
           //   headers: {
           //     Authorization: sessionStorage.getItem("token"),

@@ -2,7 +2,7 @@ import Conversation from "./Conversation"
 import Message from "./Message"
 import ChatOnline from "./ChatOnline"
 import { useContext, useEffect, useRef, useState } from "react"
-import axios from "axios"
+import axiosConfig from "../config/axiosConfig.jsx"
 import { io } from "socket.io-client"
 import { useSelector } from "react-redux"
 import { Typography } from "@mui/material"
@@ -25,7 +25,7 @@ const Messenger = () => {
   const scrollRef = useRef()
 
   useEffect(() => {
-    socket.current = io("http://localhost:5000")
+    socket.current = io(import.meta.env.VITE_BASE_URL)
     socket.current.on("getMessage", (data) => {
       setArrivalMessage({
         sender: data.senderId,
@@ -55,8 +55,8 @@ const Messenger = () => {
   useEffect(() => {
     const getConversations = async () => {
       try {
-        const res = await axios.get(
-          "http://localhost:5000/api/conversations/" + user._id,
+        const res = await axiosConfig.get(
+          "/api/conversations/" + user._id,
           { withCredentials: true }
           // {
           //   headers: {
@@ -78,8 +78,8 @@ const Messenger = () => {
   useEffect(() => {
     const getMessages = async () => {
       try {
-        const res = await axios.get(
-          "http://localhost:5000/api/messages/" + currentChat?._id,
+        const res = await axiosConfig.get(
+          "/api/messages/" + currentChat?._id,
           { withCredentials: true }
           // {
           //   headers: {
@@ -115,8 +115,8 @@ const Messenger = () => {
     })
 
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/messages",
+      const res = await axiosConfig.post(
+        "/api/messages",
         {
           message,
         },

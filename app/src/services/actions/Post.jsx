@@ -1,4 +1,4 @@
-import axios from "axios"
+import axiosConfig from "../../config/axiosConfig.jsx"
 
 export const likePost = (id) => async (dispatch) => {
   try {
@@ -6,8 +6,8 @@ export const likePost = (id) => async (dispatch) => {
       type: "likeRequest",
     })
 
-    const { data } = await axios.get(
-      `http://localhost:5000/api/J3/post/${id}`,
+    const { data } = await axiosConfig.get(
+      `/api/J3/post/${id}`,
       { withCredentials: true }
       // {
       //   headers: {
@@ -34,8 +34,8 @@ export const addCommentOnPost = (id, comment) => async (dispatch) => {
       type: "addCommentRequest",
     })
 
-    const { data } = await axios.put(
-      `http://localhost:5000/api/J3/post/comment/${id}`,
+    const { data } = await axiosConfig.put(
+      `/api/J3/post/comment/${id}`,
       {
         comment,
       },
@@ -66,8 +66,8 @@ export const deleteCommentOnPost =
         type: "deleteCommentRequest",
       })
 
-      const { data } = await axios.delete(
-        `http://localhost:5000/api/J3/post/comment/${id}`,
+      const { data } = await axiosConfig.delete(
+        `/api/J3/post/comment/${id}`,
         {
           // headers: {
           //   Authorization: sessionStorage.getItem("token"),
@@ -98,8 +98,8 @@ export const createNewPost =
         type: "newPostRequest",
       })
       console.log(city)
-      const { data } = await axios.post(
-        `http://localhost:5000/api/J3/post/upload`,
+      const { data } = await axiosConfig.post(
+        `/api/J3/post/upload`,
         {
           caption,
           image,
@@ -132,8 +132,8 @@ export const updatePost = (caption, id) => async (dispatch) => {
       type: "updateCaptionRequest",
     })
 
-    const { data } = await axios.put(
-      `http://localhost:5000/api/J3/post/${id}`,
+    const { data } = await axiosConfig.put(
+      `/api/J3/post/${id}`,
       {
         caption,
       },
@@ -163,8 +163,8 @@ export const deletePost = (id) => async (dispatch) => {
       type: "deletePostRequest",
     })
 
-    const { data } = await axios.delete(
-      `http://localhost:5000/api/J3/post/${id}`,
+    const { data } = await axiosConfig.delete(
+      `/api/J3/post/${id}`,
       { withCredentials: true }
       // {
       //   headers: {
@@ -191,8 +191,8 @@ export const forgotPassword = (email) => async (dispatch) => {
       type: "forgotPasswordRequest",
     })
 
-    const { data } = await axios.post(
-      "http://localhost:5000/api/J3/forgot/password",
+    const { data } = await axiosConfig.post(
+      "/api/J3/forgot/password",
       {
         email,
       },
@@ -225,8 +225,8 @@ export const resetPassword =
         type: "resetPasswordRequest",
       })
 
-      const { data } = await axios.put(
-        `http://localhost:5000/api/J3/password/reset/${token}`,
+      const { data } = await axiosConfig.put(
+        `/api/J3/password/reset/${token}`,
         {
           password,
         },
