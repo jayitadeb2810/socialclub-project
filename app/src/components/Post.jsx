@@ -52,7 +52,7 @@ const Post = ({
   const handleLike = async () => {
     setLiked(!liked)
 
-    console.log("comments", comments)
+    // console.log("comments", comments)
     await dispatch(likePost(postId))
 
     if (isAccount) {

@@ -25,7 +25,7 @@ const ResetPassword = () => {
       dispatch({ type: "clearErrors" })
     }
     if (message) {
-      console.log("Hello")
+      // console.log("Hello")
       alert(message)
       dispatch({ type: "clearMessage" })
       navigate("/")

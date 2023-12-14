@@ -43,7 +43,7 @@ const UpdateProfile = () => {
     await dispatch(updateProfile(name, email, avatar, bio))
     dispatch(loadUser())
   }
-  console.log("Change Profile")
+  // console.log("Change Profile")
   useEffect(() => {
     if (error) {
       alert(error)

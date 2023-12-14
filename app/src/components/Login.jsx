@@ -15,7 +15,7 @@ const Login = () => {
 
   const loginHandler = (e) => {
     e.preventDefault()
-    console.log("login")
+    // console.log("login")
     dispatch(loginUser(email, password))
   }
 

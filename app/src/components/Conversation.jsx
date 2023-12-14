@@ -26,16 +26,16 @@ export default function Conversation({ conversation, currentUser }) {
             withCredentials: true,
           }
         )
-        console.log(res)
+        // console.log(res)
         setUser(res.data)
       } catch (err) {
-        console.log(err)
+        // console.log(err)
       }
     }
     getUser()
   }, [currentUser, conversation])
 
-  console.log(user?.name)
+  // console.log(user?.name)
 
   return (
     <div className="conversation">

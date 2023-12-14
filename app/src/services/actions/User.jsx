@@ -16,7 +16,7 @@ export const loginUser = (email, password) => async (dispatch) => {
       //   },
       // }
     )
-    console.log(data)
+    // console.log(data)
     sessionStorage.setItem("token", data?.token)
     dispatch({
       type: "LoginSuccess",

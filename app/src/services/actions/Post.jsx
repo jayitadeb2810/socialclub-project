@@ -97,7 +97,7 @@ export const createNewPost =
       dispatch({
         type: "newPostRequest",
       })
-      console.log(city)
+      // console.log(city)
       const { data } = await axiosConfig.post(
         `/api/J3/post/upload`,
         {

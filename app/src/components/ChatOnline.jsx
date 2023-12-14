@@ -26,17 +26,17 @@ const ChatOnline = ({
             withCredentials: true,
           }
         )
-        console.log(res.data)
+        // console.log(res.data)
         setFriends(res.data)
       } catch (error) {
-        console.log(error)
+        // console.log(error)
       }
     }
 
     getFriends()
   }, [currentId])
 
-  console.log(friends)
+  // console.log(friends)
 
   // useEffect(() => {
   //   setOnlineFriends(
@@ -57,7 +57,7 @@ const ChatOnline = ({
         //   },
         // }
       )
-      console.log(res)
+      // console.log(res)
 
       if (res.data.success === false) {
         try {
@@ -79,13 +79,13 @@ const ChatOnline = ({
           )
           return
         } catch (error) {
-          console.log(error)
+          // console.log(error)
         }
       }
 
       setCurrentChat(res.data)
     } catch (err) {
-      console.log(err)
+      // console.log(err)
     }
 
     try {
@@ -99,10 +99,10 @@ const ChatOnline = ({
         //   },
         // }
       )
-      console.log(res.data.user)
+      // console.log(res.data.user)
       setcurrentFriend(res.data.user)
     } catch (err) {
-      console.log(err)
+      // console.log(err)
     }
   }
 

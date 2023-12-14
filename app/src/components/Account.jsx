@@ -21,11 +21,11 @@ const Account = () => {
     (state) => state.user
   )
 
-  console.log(user)
+  // console.log(user)
   const { loading, error, posts } = useSelector(
     (state) => state.myPosts
   )
-  console.log(posts)
+  // console.log(posts)
   const {
     error: likeError,
     message,

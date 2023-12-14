@@ -10,7 +10,7 @@ const SearchBar = () => {
   const [searchNameToggle, setSearchNameToggle] = useState(false)
 
   const { users, loading } = useSelector((state) => state.UsersByName)
-  console.log(users)
+  // console.log(users)
   const dispatch = useDispatch()
 
   const submitHandler = (e) => {

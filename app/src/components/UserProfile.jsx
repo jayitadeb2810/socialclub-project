@@ -21,7 +21,7 @@ const UserProfile = () => {
     error: userError,
   } = useSelector((state) => state.userProfile)
 
-  console.log(user)
+  // console.log(user)
 
   const { user: me } = useSelector((state) => state.user)
   const { loading, error, posts } = useSelector(

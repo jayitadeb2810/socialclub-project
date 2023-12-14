@@ -40,7 +40,7 @@ const Message = ({
         )
         setMessages(res.data)
       } catch (err) {
-        console.log(err)
+        // console.log(err)
       }
 
       // alert(data.message)

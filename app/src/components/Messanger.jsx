@@ -20,7 +20,7 @@ const Messenger = () => {
   const { user, loading: userLoading } = useSelector(
     (state) => state.user
   )
-  console.log(user)
+  // console.log(user)
 
   const scrollRef = useRef()
 
@@ -67,13 +67,13 @@ const Messenger = () => {
         )
         setConversations(res.data)
       } catch (err) {
-        console.log(err)
+        // console.log(err)
       }
     }
     getConversations()
   }, [user._id])
 
-  console.log(conversations)
+  // console.log(conversations)
 
   useEffect(() => {
     const getMessages = async () => {
@@ -90,7 +90,7 @@ const Messenger = () => {
         )
         setMessages(res.data)
       } catch (err) {
-        console.log(err)
+        // console.log(err)
       }
     }
     getMessages()
@@ -131,7 +131,7 @@ const Messenger = () => {
       setMessages([...messages, res.data])
       setNewMessage("")
     } catch (err) {
-      console.log(err)
+      // console.log(err)
     }
   }
 
@@ -139,7 +139,7 @@ const Messenger = () => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" })
   }, [messages])
 
-  console.log(currentChat)
+  // console.log(currentChat)
 
   return (
     <>
