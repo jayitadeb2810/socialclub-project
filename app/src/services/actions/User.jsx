@@ -37,7 +37,7 @@ export const loadUser = () => async (dispatch) => {
     })
 
     const { data } = await axiosConfig.get(
-      "https://socialclub-poject-backend.onrender.com/api/J3/me",
+      "/api/J3/mee",
       { withCredentials: true }
       // {
       //   headers: {
