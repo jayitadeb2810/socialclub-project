@@ -6,27 +6,45 @@ import userRoutes from "./routes/User.js"
 import conversationRoutes from "./routes/Conversation.js"
 import messageRoutes from "./routes/Message.js"
 import path from "path"
-import { fileURLToPath } from "url"
+// import { fileURLToPath } from "url"
 
-const getDirName = function (moduleUrl) {
-  const filename = fileURLToPath(moduleUrl)
-  return path.dirname(filename)
-}
+// const getDirName = function (moduleUrl) {
+//   const filename = fileURLToPath(moduleUrl)
+//   return path.dirname(filename)
+// }
 
-const dirName = getDirName(import.meta.url)
+// const dirName = getDirName(import.meta.url)
 
 const app = express()
 
-app.use(
-  cors({
-    origin: [
-      "https://socialclub-poject-backend.onrender.com",
-      // "http://localhost:5173",
-    ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
-)
+// app.use(
+//   cors({
+//     origin: [
+//       // "https://socialclub-poject-backend.onrender.com",
+//       "http://localhost:5173",
+//     ],
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     credentials: true,
+//   })
+// )
+
+app.use((req, res, next) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "http://localhost:5173"
+  )
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS,CONNECT,TRACE"
+  )
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization, X-Content-Type-Options, Accept, X-Requested-With, Origin, Access-Control-Request-Method, Access-Control-Request-Headers"
+  )
+  res.setHeader("Access-Control-Allow-Credentials", true)
+  next()
+})
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
@@ -37,10 +55,10 @@ app.use("/api/J3", userRoutes)
 app.use("/api/conversations", conversationRoutes)
 app.use("/api/messages", messageRoutes)
 
-app.use(express.static(path.join(dirName, "../app/dist")))
+// app.use(express.static(path.join(dirName, "../app/dist")))
 
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(dirName, "../app/dist/index.html"))
-})
+// app.get("*", (req, res) => {
+//   res.sendFile(path.resolve(dirName, "../app/dist/index.html"))
+// })
 
 export default app

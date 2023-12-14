@@ -9,15 +9,15 @@ export const loginUser = (email, password) => async (dispatch) => {
     const { data } = await axiosConfig.post(
       "/api/J3/login",
       { email, password },
-      { withCredentials: true }
       // {
       //   headers: {
       //     "Content-Type": "application/json",
       //   },
-      // }
+      // },
+      { withCredentials: true }
     )
     // console.log(data)
-    sessionStorage.setItem("token", data?.token)
+    // sessionStorage.setItem("token", data?.token)
     dispatch({
       type: "LoginSuccess",
       payload: data.user,
@@ -110,6 +110,21 @@ export const getMyPosts = () => async (dispatch) => {
       //   },
       // }
     )
+
+    console.log(
+      "jayit",
+      await axiosConfig.get(
+        "/api/J3/my/posts",
+        { withCredentials: true }
+        // {
+        //   headers: {
+        //     Authorization: sessionStorage.getItem("token"),
+        //     "Content-Type": "application/json",
+        //   },
+        // }
+      )
+    )
+
     dispatch({
       type: "myPostsSuccess",
       payload: data.posts,
@@ -226,7 +241,7 @@ export const registerUser =
         //   },
         // }
       )
-      sessionStorage.setItem("token", data?.token)
+      // sessionStorage.setItem("token", data?.token)
 
       dispatch({
         type: "RegisterSuccess",
