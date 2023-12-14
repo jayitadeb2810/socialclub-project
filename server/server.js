@@ -14,7 +14,7 @@ export const io = new Server(server, {
   cors: {
     origin: [
       "https://socialclub-poject.onrender.com",
-      "http://localhost:5173",
+      // "http://localhost:5173",
     ],
   },
 })
