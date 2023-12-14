@@ -12,13 +12,15 @@ const server = http.createServer(app)
 // export const io = new Server(server)
 export const io = new Server(server, {
   cors: {
-    origin: ["https://socialclub-poject.onrender.com"],
+    origin: [
+      "https://socialclub-poject.onrender.com",
+      "http://localhost:5173",
+    ],
   },
 })
-
-const port = process.env.PORT || 5080
-
 dotenv.config()
+
+const port = process.env.PORT
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,
