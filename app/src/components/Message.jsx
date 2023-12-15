@@ -19,10 +19,12 @@ const Message = ({
     try {
       const { data } = await axiosConfig.delete(
         `/api/messages/${id}`,
-        // headers: {
-        //   Authorization: sessionStorage.getItem("token"),
-        //   "Content-Type": "application/json",
-        // },
+        {
+          headers: {
+            Authorization: sessionStorage.getItem("token"),
+            "Content-Type": "application/json",
+          },
+        },
 
         { withCredentials: true }
       )
@@ -30,13 +32,13 @@ const Message = ({
       try {
         const res = await axiosConfig.get(
           "/api/messages/" + currentChat?._id,
+          {
+            headers: {
+              Authorization: sessionStorage.getItem("token"),
+              "Content-Type": "application/json",
+            },
+          },
           { withCredentials: true }
-          // {
-          //   headers: {
-          //     Authorization: sessionStorage.getItem("token"),
-          //     "Content-Type": "application/json",
-          //   },
-          // }
         )
         setMessages(res.data)
       } catch (err) {
@@ -63,7 +65,6 @@ const Message = ({
               ? currentFriend?.avatar?.url
               : noAvatar
           }
-          // src="https://images.pexels.com/photos/3686769/pexels-photo-3686769.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
           alt=""
         />
         <p

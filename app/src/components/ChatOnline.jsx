@@ -16,12 +16,12 @@ const ChatOnline = ({
       try {
         const res = await axiosConfig.get(
           "/api/J3/friends/" + currentId,
-          // {
-          //   headers: {
-          //     Authorization: sessionStorage.getItem("token"),
-          //     "Content-Type": "application/json",
-          //   },
-          // }
+          {
+            headers: {
+              Authorization: sessionStorage.getItem("token"),
+              "Content-Type": "application/json",
+            },
+          },
           {
             withCredentials: true,
           }
@@ -49,13 +49,13 @@ const ChatOnline = ({
       const res = await axiosConfig.get(
         `/api/conversations/find/${currentId}/${user._id}`,
 
+        {
+          headers: {
+            Authorization: sessionStorage.getItem("token"),
+            "Content-Type": "application/json",
+          },
+        },
         { withCredentials: true }
-        // {
-        //   headers: {
-        //     Authorization: sessionStorage.getItem("token"),
-        //     "Content-Type": "application/json",
-        //   },
-        // }
       )
       // console.log(res)
 
@@ -69,13 +69,13 @@ const ChatOnline = ({
               receiverId: user._id,
             },
 
+            {
+              headers: {
+                Authorization: sessionStorage.getItem("token"),
+                "Content-Type": "application/json",
+              },
+            },
             { withCredentials: true }
-            // {
-            //   headers: {
-            //     Authorization: sessionStorage.getItem("token"),
-            //     "Content-Type": "application/json",
-            //   },
-            // }
           )
           return
         } catch (error) {
@@ -91,13 +91,13 @@ const ChatOnline = ({
     try {
       const res = await axiosConfig.get(
         `/api/J3/user/${user._id}`,
+        {
+          headers: {
+            Authorization: sessionStorage.getItem("token"),
+            "Content-Type": "application/json",
+          },
+        },
         { withCredentials: true }
-        // {
-        //   headers: {
-        //     Authorization: sessionStorage.getItem("token"),
-        //     "Content-Type": "application/json",
-        //   },
-        // }
       )
       // console.log(res.data.user)
       setcurrentFriend(res.data.user)

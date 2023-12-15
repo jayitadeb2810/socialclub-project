@@ -57,13 +57,13 @@ const Messenger = () => {
       try {
         const res = await axiosConfig.get(
           "/api/conversations/" + user._id,
+          {
+            headers: {
+              Authorization: sessionStorage.getItem("token"),
+              "Content-Type": "application/json",
+            },
+          },
           { withCredentials: true }
-          // {
-          //   headers: {
-          //     Authorization: sessionStorage.getItem("token"),
-          //     "Content-Type": "application/json",
-          //   },
-          // }
         )
         setConversations(res.data)
       } catch (err) {
@@ -80,13 +80,13 @@ const Messenger = () => {
       try {
         const res = await axiosConfig.get(
           "/api/messages/" + currentChat?._id,
+          {
+            headers: {
+              Authorization: sessionStorage.getItem("token"),
+              "Content-Type": "application/json",
+            },
+          },
           { withCredentials: true }
-          // {
-          //   headers: {
-          //     Authorization: sessionStorage.getItem("token"),
-          //     "Content-Type": "application/json",
-          //   },
-          // }
         )
         setMessages(res.data)
       } catch (err) {
@@ -120,12 +120,12 @@ const Messenger = () => {
         {
           message,
         },
-        // {
-        //   headers: {
-        //     Authorization: sessionStorage.getItem("token"),
-        //     "Content-Type": "application/json",
-        //   },
-        // }
+        {
+          headers: {
+            Authorization: sessionStorage.getItem("token"),
+            "Content-Type": "application/json",
+          },
+        },
         { withCredentials: true }
       )
       setMessages([...messages, res.data])

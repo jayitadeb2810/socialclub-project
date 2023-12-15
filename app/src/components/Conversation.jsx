@@ -16,12 +16,12 @@ export default function Conversation({ conversation, currentUser }) {
       try {
         const res = await axiosConfig(
           "/api/J3/user?userId=" + friendId,
-          // {
-          //   headers: {
-          //     Authorization: sessionStorage.getItem("token"),
-          //     "Content-Type": "application/json",
-          //   },
-          // }
+          {
+            headers: {
+              Authorization: sessionStorage.getItem("token"),
+              "Content-Type": "application/json",
+            },
+          },
           {
             withCredentials: true,
           }
