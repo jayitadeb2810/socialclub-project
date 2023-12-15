@@ -17,21 +17,10 @@ import path from "path"
 
 const app = express()
 
-// app.use(
-//   cors({
-//     origin: [
-//       // "https://socialclub-poject-backend.onrender.com",
-//       "http://localhost:5173",
-//     ],
-//     methods: ["GET", "POST", "PUT", "DELETE"],
-//     credentials: true,
-//   })
-// )
-
 app.use((req, res, next) => {
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "http://localhost:5173"
+    "https://socialclub-poject-server.onrender.com"
   )
   res.setHeader(
     "Access-Control-Allow-Methods",
