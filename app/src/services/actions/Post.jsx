@@ -114,7 +114,6 @@ export const createNewPost =
         //   },
         // }
       )
-      console.log("jayit", data)
       dispatch({
         type: "newPostSuccess",
         payload: data.message,

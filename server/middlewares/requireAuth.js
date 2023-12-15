@@ -3,8 +3,8 @@ import jwt from "jsonwebtoken"
 
 const requireAuth = async (req, res, next) => {
   try {
-    // const token = req.headers.authorization
-    const { token } = req.cookies
+    const token = req.headers.authorization
+    // const { token } = req.cookies
 
     // console.log(req.headers)
     // console.log("token", token)

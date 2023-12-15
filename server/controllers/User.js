@@ -28,23 +28,23 @@ export const register = async (req, res) => {
 
     const token = await user.generateToken()
 
-    const options = {
-      expires: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
-      httpOnly: true,
-    }
+    // const options = {
+    //   expires: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
+    //   httpOnly: true,
+    // }
 
-    // res.status(201).json({
-    //   success: true,
-    //   user,
-    //   token,
-    //   message: "New Account Created",
-    // })
-    res.status(201).cookie("token", token, options).json({
+    res.status(201).json({
       success: true,
       user,
       token,
       message: "New Account Created",
     })
+    // res.status(201).cookie("token", token, options).json({
+    //   success: true,
+    //   user,
+    //   token,
+    //   message: "New Account Created",
+    // })
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -79,21 +79,21 @@ export const login = async (req, res) => {
 
     const token = await user.generateToken()
 
-    const options = {
-      expires: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
-      httpOnly: true,
-    }
+    // const options = {
+    //   expires: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
+    //   httpOnly: true,
+    // }
 
-    // res.status(200).json({
-    //   success: true,
-    //   user,
-    //   token,
-    // })
-    res.status(200).cookie("token", token, options).json({
+    res.status(200).json({
       success: true,
       user,
       token,
     })
+    // res.status(200).cookie("token", token, options).json({
+    //   success: true,
+    //   user,
+    //   token,
+    // })
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -106,10 +106,10 @@ export const logout = async (req, res) => {
   try {
     res
       .status(200)
-      .cookie("token", null, {
-        expires: new Date(Date.now()),
-        httpOnly: true,
-      })
+      // .cookie("token", null, {
+      //   expires: new Date(Date.now()),
+      //   httpOnly: true,
+      // })
       .json({
         success: true,
         message: "Logged out",
@@ -217,10 +217,10 @@ export const updatePassword = async (req, res) => {
     await user.save()
     res
       .status(200)
-      .cookie("token", null, {
-        expires: new Date(Date.now()),
-        httpOnly: true,
-      })
+      // .cookie("token", null, {
+      //   expires: new Date(Date.now()),
+      //   httpOnly: true,
+      // })
       .json({
         success: true,
         message: "Password Updated",

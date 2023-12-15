@@ -31,7 +31,7 @@ const app = express()
 app.use((req, res, next) => {
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "http://localhost:5173"
+    "https://socialclub-application.onrender.com"
   )
   res.setHeader(
     "Access-Control-Allow-Methods",
