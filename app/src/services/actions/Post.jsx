@@ -8,13 +8,13 @@ export const likePost = (id) => async (dispatch) => {
 
     const { data } = await axiosConfig.get(
       `/api/J3/post/${id}`,
+      {
+        headers: {
+          Authorization: sessionStorage.getItem("token"),
+          "Content-Type": "application/json",
+        },
+      },
       { withCredentials: true }
-      // {
-      //   headers: {
-      //     Authorization: sessionStorage.getItem("token"),
-      //     "Content-Type": "application/json",
-      //   },
-      // }
     )
     dispatch({
       type: "likeSuccess",
@@ -39,13 +39,13 @@ export const addCommentOnPost = (id, comment) => async (dispatch) => {
       {
         comment,
       },
+      {
+        headers: {
+          Authorization: sessionStorage.getItem("token"),
+          "Content-Type": "application/json",
+        },
+      },
       { withCredentials: true }
-      // {
-      //   headers: {
-      //     Authorization: sessionStorage.getItem("token"),
-      //     "Content-Type": "application/json",
-      //   },
-      // }
     )
     dispatch({
       type: "addCommentSuccess",
@@ -69,10 +69,10 @@ export const deleteCommentOnPost =
       const { data } = await axiosConfig.delete(
         `/api/J3/post/comment/${id}`,
         {
-          // headers: {
-          //   Authorization: sessionStorage.getItem("token"),
-          //   "Content-Type": "application/json",
-          // },
+          headers: {
+            Authorization: sessionStorage.getItem("token"),
+            "Content-Type": "application/json",
+          },
           data: {
             commentId,
           },
@@ -106,13 +106,13 @@ export const createNewPost =
           city,
           country,
         },
+        {
+          headers: {
+            Authorization: sessionStorage.getItem("token"),
+            "Content-Type": "application/json",
+          },
+        },
         { withCredentials: true }
-        // {
-        //   headers: {
-        //     Authorization: sessionStorage.getItem("token"),
-        //     "Content-Type": "application/json",
-        //   },
-        // }
       )
       dispatch({
         type: "newPostSuccess",
@@ -137,13 +137,13 @@ export const updatePost = (caption, id) => async (dispatch) => {
       {
         caption,
       },
+      {
+        headers: {
+          Authorization: sessionStorage.getItem("token"),
+          "Content-Type": "application/json",
+        },
+      },
       { withCredentials: true }
-      // {
-      //   headers: {
-      //     Authorization: sessionStorage.getItem("token"),
-      //     "Content-Type": "application/json",
-      //   },
-      // }
     )
     dispatch({
       type: "updateCaptionSuccess",
@@ -165,13 +165,13 @@ export const deletePost = (id) => async (dispatch) => {
 
     const { data } = await axiosConfig.delete(
       `/api/J3/post/${id}`,
+      {
+        headers: {
+          Authorization: sessionStorage.getItem("token"),
+          "Content-Type": "application/json",
+        },
+      },
       { withCredentials: true }
-      // {
-      //   headers: {
-      //     Authorization: sessionStorage.getItem("token"),
-      //     "Content-Type": "application/json",
-      //   },
-      // }
     )
     dispatch({
       type: "deletePostSuccess",
@@ -196,14 +196,13 @@ export const forgotPassword = (email) => async (dispatch) => {
       {
         email,
       },
+      {
+        headers: {
+          Authorization: sessionStorage.getItem("token"),
+          "Content-Type": "application/json",
+        },
+      },
       { withCredentials: true }
-
-      // {
-      //   headers: {
-      //     Authorization: sessionStorage.getItem("token"),
-      //     "Content-Type": "application/json",
-      //   },
-      // }
     )
 
     dispatch({
@@ -230,12 +229,12 @@ export const resetPassword =
         {
           password,
         },
-        // {
-        //   headers: {
-        //     Authorization: sessionStorage.getItem("token"),
-        //     "Content-Type": "application/json",
-        //   },
-        // }
+        {
+          headers: {
+            Authorization: sessionStorage.getItem("token"),
+            "Content-Type": "application/json",
+          },
+        },
         { withCredentials: true }
       )
 

@@ -9,15 +9,15 @@ export const loginUser = (email, password) => async (dispatch) => {
     const { data } = await axiosConfig.post(
       "/api/J3/login",
       { email, password },
-      // {
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      // },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      },
       { withCredentials: true }
     )
     // console.log(data)
-    // sessionStorage.setItem("token", data?.token)
+    sessionStorage.setItem("token", data?.token)
     dispatch({
       type: "LoginSuccess",
       payload: data.user,
@@ -38,13 +38,13 @@ export const loadUser = () => async (dispatch) => {
 
     const { data } = await axiosConfig.get(
       "/api/J3/me",
+      {
+        headers: {
+          Authorization: sessionStorage.getItem("token"),
+          "Content-Type": "application/json",
+        },
+      },
       { withCredentials: true }
-      // {
-      //   headers: {
-      //     Authorization: sessionStorage.getItem("token"),
-      //     "Content-Type": "application/json",
-      //   },
-      // }
     )
     dispatch({
       type: "LoadUserSuccess",
@@ -69,18 +69,13 @@ export const getFollowingPosts = () => async (dispatch) => {
     const { data } = await axiosConfig.get(
       "/api/J3/posts",
 
-      // {
-      //   params: {
-      //     token: sessionStorage.getItem("token"),
-      //   },
-      // },
+      {
+        headers: {
+          Authorization: sessionStorage.getItem("token"),
+          "Content-Type": "application/json",
+        },
+      },
       { withCredentials: true }
-      // {
-      //   headers: {
-      //     Authorization: sessionStorage.getItem("token"),
-      //     "Content-Type": "application/json",
-      //   },
-      // }
     )
     dispatch({
       type: "postOfFollowingSuccess",
@@ -102,26 +97,26 @@ export const getMyPosts = () => async (dispatch) => {
 
     const { data } = await axiosConfig.get(
       "/api/J3/my/posts",
+      {
+        headers: {
+          Authorization: sessionStorage.getItem("token"),
+          "Content-Type": "application/json",
+        },
+      },
       { withCredentials: true }
-      // {
-      //   headers: {
-      //     Authorization: sessionStorage.getItem("token"),
-      //     "Content-Type": "application/json",
-      //   },
-      // }
     )
 
     console.log(
       "jayit",
       await axiosConfig.get(
         "/api/J3/my/posts",
+        {
+          headers: {
+            Authorization: sessionStorage.getItem("token"),
+            "Content-Type": "application/json",
+          },
+        },
         { withCredentials: true }
-        // {
-        //   headers: {
-        //     Authorization: sessionStorage.getItem("token"),
-        //     "Content-Type": "application/json",
-        //   },
-        // }
       )
     )
 
@@ -145,13 +140,13 @@ export const getAllUsers = () => async (dispatch) => {
 
     const { data } = await axiosConfig.get(
       `/api/J3/users`,
+      {
+        headers: {
+          Authorization: sessionStorage.getItem("token"),
+          "Content-Type": "application/json",
+        },
+      },
       { withCredentials: true }
-      // {
-      //   headers: {
-      //     Authorization: sessionStorage.getItem("token"),
-      //     "Content-Type": "application/json",
-      //   },
-      // }
     )
 
     dispatch({
@@ -173,13 +168,13 @@ export const getUsersByName = (name) => async (dispatch) => {
 
     const { data } = await axiosConfig.get(
       `/api/J3/usersbyname?name=${name}`,
+      {
+        headers: {
+          Authorization: sessionStorage.getItem("token"),
+          "Content-Type": "application/json",
+        },
+      },
       { withCredentials: true }
-      // {
-      //   headers: {
-      //     Authorization: sessionStorage.getItem("token"),
-      //     "Content-Type": "application/json",
-      //   },
-      // }
     )
     dispatch({
       type: "UsersByNameSuccess",
@@ -202,14 +197,14 @@ export const logoutUser = () => async (dispatch) => {
     await axiosConfig.get(
       "/api/J3/logout",
       {
+        headers: {
+          Authorization: sessionStorage.getItem("token"),
+          "Content-Type": "application/json",
+        },
+      },
+      {
         withCredentials: true,
       }
-      // {
-      //   headers: {
-      //     Authorization: sessionStorage.getItem("token"),
-      //     "Content-Type": "application/json",
-      //   },
-      // }
     )
 
     dispatch({
@@ -233,15 +228,15 @@ export const registerUser =
       const { data } = await axiosConfig.post(
         "/api/J3/register",
         { name, email, password },
+        {
+          headers: {
+            Authorization: sessionStorage.getItem("token"),
+            "Content-Type": "application/json",
+          },
+        },
         { withCredentials: true }
-        // {
-        //   headers: {
-        //     Authorization: sessionStorage.getItem("token"),
-        //     "Content-Type": "application/json",
-        //   },
-        // }
       )
-      // sessionStorage.setItem("token", data?.token)
+      sessionStorage.setItem("token", data?.token)
 
       dispatch({
         type: "RegisterSuccess",
@@ -265,13 +260,13 @@ export const updateProfile =
       const { data } = await axiosConfig.put(
         "/api/J3/update/profile",
         { name, email, avatar, bio },
+        {
+          headers: {
+            Authorization: sessionStorage.getItem("token"),
+            "Content-Type": "application/json",
+          },
+        },
         { withCredentials: true }
-        // {
-        //   headers: {
-        //     Authorization: sessionStorage.getItem("token"),
-        //     "Content-Type": "application/json",
-        //   },
-        // }
       )
 
       dispatch({
@@ -296,13 +291,13 @@ export const updatePassword =
       const { data } = await axiosConfig.put(
         "/api/J3/update/password",
         { oldPassword, newPassword },
+        {
+          headers: {
+            Authorization: sessionStorage.getItem("token"),
+            "Content-Type": "application/json",
+          },
+        },
         { withCredentials: true }
-        // {
-        //   headers: {
-        //     Authorization: sessionStorage.getItem("token"),
-        //     "Content-Type": "application/json",
-        //   },
-        // }
       )
 
       dispatch({
@@ -347,13 +342,13 @@ export const getUserPosts = (id) => async (dispatch) => {
 
     const { data } = await axiosConfig.get(
       `/api/J3/userposts/${id}`,
+      {
+        headers: {
+          Authorization: sessionStorage.getItem("token"),
+          "Content-Type": "application/json",
+        },
+      },
       { withCredentials: true }
-      // {
-      //   headers: {
-      //     Authorization: sessionStorage.getItem("token"),
-      //     "Content-Type": "application/json",
-      //   },
-      // }
     )
     dispatch({
       type: "userPostsSuccess",
@@ -375,13 +370,13 @@ export const getUserProfile = (id) => async (dispatch) => {
 
     const { data } = await axiosConfig.get(
       `/api/J3/user/${id}`,
+      {
+        headers: {
+          Authorization: sessionStorage.getItem("token"),
+          "Content-Type": "application/json",
+        },
+      },
       { withCredentials: true }
-      // {
-      //   headers: {
-      //     Authorization: sessionStorage.getItem("token"),
-      //     "Content-Type": "application/json",
-      //   },
-      // }
     )
     dispatch({
       type: "userProfileSuccess",
@@ -403,13 +398,13 @@ export const followAndUnfollowUser = (id) => async (dispatch) => {
 
     const { data } = await axiosConfig.get(
       `/api/J3/follow/${id}`,
+      {
+        headers: {
+          Authorization: sessionStorage.getItem("token"),
+          "Content-Type": "application/json",
+        },
+      },
       { withCredentials: true }
-      // {
-      //   headers: {
-      //     Authorization: sessionStorage.getItem("token"),
-      //     "Content-Type": "application/json",
-      //   },
-      // }
     )
     dispatch({
       type: "followUserSuccess",
