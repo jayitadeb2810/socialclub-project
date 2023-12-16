@@ -394,7 +394,7 @@ export const forgotPassword = async (req, res) => {
     await user.save()
 
     const resetUrl = `${req.protocol}://${req.get(
-      "host"
+      "origin"
     )}/password/reset/${resetPasswordToken}`
     // const resetUrl = `${req.protocol}://${process.env.BASE_URL_PORT}/password/reset/${resetPasswordToken}`
 
