@@ -12,9 +12,7 @@ const server = http.createServer(app)
 // export const io = new Server(server)
 export const io = new Server(server, {
   cors: {
-    origin: [
-      // "https://socialclub-application.onrender.com",
-    ],
+    origin: ["https://socialclub-application.onrender.com"],
   },
 })
 dotenv.config()
