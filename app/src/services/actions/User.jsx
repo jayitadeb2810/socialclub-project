@@ -106,18 +106,15 @@ export const getMyPosts = () => async (dispatch) => {
       { withCredentials: true }
     )
 
-    console.log(
-      "jayit",
-      await axiosConfig.get(
-        "/api/J3/my/posts",
-        {
-          headers: {
-            Authorization: sessionStorage.getItem("token"),
-            "Content-Type": "application/json",
-          },
+    await axiosConfig.get(
+      "/api/J3/my/posts",
+      {
+        headers: {
+          Authorization: sessionStorage.getItem("token"),
+          "Content-Type": "application/json",
         },
-        { withCredentials: true }
-      )
+      },
+      { withCredentials: true }
     )
 
     dispatch({
