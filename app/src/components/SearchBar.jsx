@@ -16,6 +16,7 @@ const SearchBar = () => {
   const submitHandler = (e) => {
     e.preventDefault()
     dispatch(getUsersByName(name))
+    setName("")
   }
 
   return (
@@ -46,7 +47,7 @@ const SearchBar = () => {
                 key={item._id}
                 userId={item._id}
                 name={item.name}
-                avatar={item.avatar.url}
+                avatar={item?.avatar?.url}
               />
             ))
           ) : (

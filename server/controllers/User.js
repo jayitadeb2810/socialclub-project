@@ -412,7 +412,7 @@ export const forgotPassword = async (req, res) => {
 
       res.status(200).json({
         success: true,
-        message: `Email sent to ${user.email}`,
+        message: `Email sent to ${user.email} via Mailtrap`,
       })
     } catch (error) {
       user.resetPasswordToken = undefined

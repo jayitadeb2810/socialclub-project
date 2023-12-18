@@ -21,8 +21,8 @@ const CommentCard = ({
   const { user } = useSelector((state) => state.user)
   const dispatch = useDispatch()
 
-  const deleteCommentHandle = () => {
-    dispatch(deleteCommentOnPost(postId, commentId))
+  const deleteCommentHandle = async () => {
+    await dispatch(deleteCommentOnPost(postId, commentId))
 
     if (isAccount) {
       dispatch(getMyPosts())

@@ -15,7 +15,7 @@ const Home = () => {
   const { loading, posts, error } = useSelector(
     (state) => state.postOfFollowing
   )
-  console.log(posts)
+  // console.log(posts)
 
   const { users, loading: usersLoading } = useSelector(
     (state) => state.allUsers
