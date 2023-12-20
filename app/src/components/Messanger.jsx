@@ -52,7 +52,7 @@ const Messenger = () => {
     })
   }, [user])
 
-  console.log(onlineUsers)
+  // console.log(onlineUsers)
 
   useEffect(() => {
     const getConversations = async () => {
