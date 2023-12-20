@@ -7,6 +7,7 @@ const ChatOnline = ({
   currentId,
   setCurrentChat,
   setcurrentFriend,
+  onlineUsers,
 }) => {
   const [friends, setFriends] = useState([])
   // const PF = process.env.REACT_APP_PUBLIC_FOLDER
@@ -108,21 +109,25 @@ const ChatOnline = ({
 
   return (
     <div className="chatOnline">
-      {friends.map((o, index) => (
+      {friends.map((f, index) => (
         <div
           key={index}
           className="chatOnlineFriend"
-          onClick={() => handleClick(o)}
+          onClick={() => handleClick(f)}
         >
           <div className="chatOnlineImgContainer">
             <img
               className="chatOnlineImg"
-              src={o?.avatar?.url ? o.avatar?.url : noAvatar}
+              src={f?.avatar?.url ? f.avatar?.url : noAvatar}
               alt="userpicture"
             />
-            <div className="chatOnlineBadge"></div>
+            {onlineUsers.some(
+              (o) => o._id.toString() === f._id.toString()
+            ) ? (
+              <div className="chatOnlineBadge"></div>
+            ) : null}
           </div>
-          <span className="chatOnlineName">{o?.name}</span>
+          <span className="chatOnlineName">{f?.name}</span>
         </div>
       ))}
     </div>

@@ -9,6 +9,7 @@ export const sendEmail = async (options) => {
       pass: "c4182683ef75d3",
     },
   })
+  
   //   const transporter = nodeMailer.createTransport({
   //     host: "smtp.mailtrap.io",
   //     port: 2525,

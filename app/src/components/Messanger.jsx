@@ -46,11 +46,13 @@ const Messenger = () => {
     socket.current.on("getUsers", (users) => {
       setOnlineUsers(
         user.following.filter((f) =>
-          users.some((u) => u.userId === f)
+          users.some((u) => u.userId === f._id)
         )
       )
     })
   }, [user])
+
+  console.log(onlineUsers)
 
   useEffect(() => {
     const getConversations = async () => {
