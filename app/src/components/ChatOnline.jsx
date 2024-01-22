@@ -10,7 +10,10 @@ const ChatOnline = ({
   onlineUsers,
 }) => {
   const [friends, setFriends] = useState([])
+  const [onlineFriends, setOnlineFriends] = useState([])
   // const PF = process.env.REACT_APP_PUBLIC_FOLDER
+
+  console.log(onlineUsers)
 
   useEffect(() => {
     const getFriends = async () => {
@@ -19,7 +22,7 @@ const ChatOnline = ({
           "/api/J3/friends/" + currentId,
           {
             headers: {
-              Authorization: sessionStorage.getItem("token"),
+              Authorization: localStorage.getItem("token"),
               "Content-Type": "application/json",
             },
           },
@@ -37,13 +40,12 @@ const ChatOnline = ({
     getFriends()
   }, [currentId])
 
-  // console.log(friends)
-
-  // useEffect(() => {
-  //   setOnlineFriends(
-  //     friends.filter((f) => onlineUsers.includes(f._id))
-  //   )
-  // }, [friends, onlineUsers])
+  useEffect(() => {
+    setOnlineFriends(
+      // friends.filter((f) => (o) => o._id.toString() === f._id.toString())
+      friends.filter((f) => onlineUsers.some((o) => o._id === f._id))
+    )
+  }, [friends, onlineUsers])
 
   const handleClick = async (user) => {
     try {
@@ -52,7 +54,7 @@ const ChatOnline = ({
 
         {
           headers: {
-            Authorization: sessionStorage.getItem("token"),
+            Authorization: localStorage.getItem("token"),
             "Content-Type": "application/json",
           },
         },
@@ -72,7 +74,7 @@ const ChatOnline = ({
 
             {
               headers: {
-                Authorization: sessionStorage.getItem("token"),
+                Authorization: localStorage.getItem("token"),
                 "Content-Type": "application/json",
               },
             },
@@ -94,7 +96,7 @@ const ChatOnline = ({
         `/api/J3/user/${user._id}`,
         {
           headers: {
-            Authorization: sessionStorage.getItem("token"),
+            Authorization: localStorage.getItem("token"),
             "Content-Type": "application/json",
           },
         },
@@ -109,7 +111,7 @@ const ChatOnline = ({
 
   return (
     <div className="chatOnline">
-      {friends.map((f, index) => (
+      {onlineFriends.map((f, index) => (
         <div
           key={index}
           className="chatOnlineFriend"
@@ -121,11 +123,12 @@ const ChatOnline = ({
               src={f?.avatar?.url ? f.avatar?.url : noAvatar}
               alt="userpicture"
             />
-            {onlineUsers.some(
+            <div className="chatOnlineBadge"></div>
+            {/* {onlineUsers.some(
               (o) => o._id.toString() === f._id.toString()
             ) ? (
               <div className="chatOnlineBadge"></div>
-            ) : null}
+            ) : null} */}
           </div>
           <span className="chatOnlineName">{f?.name}</span>
         </div>

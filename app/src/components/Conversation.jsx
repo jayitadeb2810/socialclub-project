@@ -18,7 +18,7 @@ export default function Conversation({ conversation, currentUser }) {
           "/api/J3/user?userId=" + friendId,
           {
             headers: {
-              Authorization: sessionStorage.getItem("token"),
+              Authorization: localStorage.getItem("token"),
               "Content-Type": "application/json",
             },
           },

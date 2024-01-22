@@ -17,7 +17,7 @@ export const loginUser = (email, password) => async (dispatch) => {
       { withCredentials: true }
     )
     // console.log(data)
-    sessionStorage.setItem("token", data?.token)
+    localStorage.setItem("token", data?.token)
     dispatch({
       type: "LoginSuccess",
       payload: data.user,
@@ -40,7 +40,7 @@ export const loadUser = () => async (dispatch) => {
       "/api/J3/me",
       {
         headers: {
-          Authorization: sessionStorage.getItem("token"),
+          Authorization: localStorage.getItem("token"),
           "Content-Type": "application/json",
         },
       },
@@ -51,7 +51,7 @@ export const loadUser = () => async (dispatch) => {
       payload: data.user,
     })
   } catch (error) {
-    // console.log(sessionStorage.getItem("token"))
+    // console.log(localStorage.getItem("token"))
 
     dispatch({
       type: "LoadUserFailure",
@@ -71,7 +71,7 @@ export const getFollowingPosts = () => async (dispatch) => {
 
       {
         headers: {
-          Authorization: sessionStorage.getItem("token"),
+          Authorization: localStorage.getItem("token"),
           "Content-Type": "application/json",
         },
       },
@@ -99,7 +99,7 @@ export const getMyPosts = () => async (dispatch) => {
       "/api/J3/my/posts",
       {
         headers: {
-          Authorization: sessionStorage.getItem("token"),
+          Authorization: localStorage.getItem("token"),
           "Content-Type": "application/json",
         },
       },
@@ -110,7 +110,7 @@ export const getMyPosts = () => async (dispatch) => {
       "/api/J3/my/posts",
       {
         headers: {
-          Authorization: sessionStorage.getItem("token"),
+          Authorization: localStorage.getItem("token"),
           "Content-Type": "application/json",
         },
       },
@@ -139,7 +139,7 @@ export const getAllUsers = () => async (dispatch) => {
       `/api/J3/users`,
       {
         headers: {
-          Authorization: sessionStorage.getItem("token"),
+          Authorization: localStorage.getItem("token"),
           "Content-Type": "application/json",
         },
       },
@@ -167,7 +167,7 @@ export const getUsersByName = (name) => async (dispatch) => {
       `/api/J3/usersbyname?name=${name}`,
       {
         headers: {
-          Authorization: sessionStorage.getItem("token"),
+          Authorization: localStorage.getItem("token"),
           "Content-Type": "application/json",
         },
       },
@@ -195,7 +195,7 @@ export const logoutUser = () => async (dispatch) => {
       "/api/J3/logout",
       {
         headers: {
-          Authorization: sessionStorage.getItem("token"),
+          Authorization: localStorage.getItem("token"),
           "Content-Type": "application/json",
         },
       },
@@ -227,13 +227,13 @@ export const registerUser =
         { name, email, password },
         {
           headers: {
-            Authorization: sessionStorage.getItem("token"),
+            Authorization: localStorage.getItem("token"),
             "Content-Type": "application/json",
           },
         },
         { withCredentials: true }
       )
-      sessionStorage.setItem("token", data?.token)
+      localStorage.setItem("token", data?.token)
 
       dispatch({
         type: "RegisterSuccess",
@@ -259,7 +259,7 @@ export const updateProfile =
         { name, email, avatar, bio },
         {
           headers: {
-            Authorization: sessionStorage.getItem("token"),
+            Authorization: localStorage.getItem("token"),
             "Content-Type": "application/json",
           },
         },
@@ -290,7 +290,7 @@ export const updatePassword =
         { oldPassword, newPassword },
         {
           headers: {
-            Authorization: sessionStorage.getItem("token"),
+            Authorization: localStorage.getItem("token"),
             "Content-Type": "application/json",
           },
         },
@@ -341,7 +341,7 @@ export const getUserPosts = (id) => async (dispatch) => {
       `/api/J3/userposts/${id}`,
       {
         headers: {
-          Authorization: sessionStorage.getItem("token"),
+          Authorization: localStorage.getItem("token"),
           "Content-Type": "application/json",
         },
       },
@@ -369,7 +369,7 @@ export const getUserProfile = (id) => async (dispatch) => {
       `/api/J3/user/${id}`,
       {
         headers: {
-          Authorization: sessionStorage.getItem("token"),
+          Authorization: localStorage.getItem("token"),
           "Content-Type": "application/json",
         },
       },
@@ -397,7 +397,7 @@ export const followAndUnfollowUser = (id) => async (dispatch) => {
       `/api/J3/follow/${id}`,
       {
         headers: {
-          Authorization: sessionStorage.getItem("token"),
+          Authorization: localStorage.getItem("token"),
           "Content-Type": "application/json",
         },
       },

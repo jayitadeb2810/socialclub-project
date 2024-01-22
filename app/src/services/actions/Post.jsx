@@ -10,7 +10,7 @@ export const likePost = (id) => async (dispatch) => {
       `/api/J3/post/${id}`,
       {
         headers: {
-          Authorization: sessionStorage.getItem("token"),
+          Authorization: localStorage.getItem("token"),
           "Content-Type": "application/json",
         },
       },
@@ -41,7 +41,7 @@ export const addCommentOnPost = (id, comment) => async (dispatch) => {
       },
       {
         headers: {
-          Authorization: sessionStorage.getItem("token"),
+          Authorization: localStorage.getItem("token"),
           "Content-Type": "application/json",
         },
       },
@@ -70,7 +70,7 @@ export const deleteCommentOnPost =
         `/api/J3/post/comment/${id}`,
         {
           headers: {
-            Authorization: sessionStorage.getItem("token"),
+            Authorization: localStorage.getItem("token"),
             "Content-Type": "application/json",
           },
           data: {
@@ -108,7 +108,7 @@ export const createNewPost =
         },
         {
           headers: {
-            Authorization: sessionStorage.getItem("token"),
+            Authorization: localStorage.getItem("token"),
             "Content-Type": "application/json",
           },
         },
@@ -139,7 +139,7 @@ export const updatePost = (caption, id) => async (dispatch) => {
       },
       {
         headers: {
-          Authorization: sessionStorage.getItem("token"),
+          Authorization: localStorage.getItem("token"),
           "Content-Type": "application/json",
         },
       },
@@ -167,7 +167,7 @@ export const deletePost = (id) => async (dispatch) => {
       `/api/J3/post/${id}`,
       {
         headers: {
-          Authorization: sessionStorage.getItem("token"),
+          Authorization: localStorage.getItem("token"),
           "Content-Type": "application/json",
         },
       },
@@ -198,7 +198,7 @@ export const forgotPassword = (email) => async (dispatch) => {
       },
       {
         headers: {
-          Authorization: sessionStorage.getItem("token"),
+          Authorization: localStorage.getItem("token"),
           "Content-Type": "application/json",
         },
       },
@@ -231,7 +231,7 @@ export const resetPassword =
         },
         {
           headers: {
-            Authorization: sessionStorage.getItem("token"),
+            Authorization: localStorage.getItem("token"),
             "Content-Type": "application/json",
           },
         },

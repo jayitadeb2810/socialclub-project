@@ -24,7 +24,7 @@ function App() {
   const { isAuthenticated } = useSelector((state) => state.user)
 
   // console.log(isAuthenticated)
-  // console.log(sessionStorage.getItem("token"))
+  // console.log(localStorage.getItem("token"))
 
   useEffect(() => {
     dispatch(loadUser())

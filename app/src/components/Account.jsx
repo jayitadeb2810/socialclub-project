@@ -37,7 +37,7 @@ const Account = () => {
   const [followingToggle, setFollowingToggle] = useState(false)
   const logoutHandler = () => {
     dispatch(logoutUser())
-    sessionStorage.removeItem("token")
+    localStorage.removeItem("token")
     // alert("Logged out successfully")
   }
 

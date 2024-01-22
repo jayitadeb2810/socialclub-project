@@ -20,7 +20,7 @@ const UpdatePassword = () => {
   const submitHandler = (e) => {
     e.preventDefault()
     dispatch(updatePassword(oldPassword, newPassword))
-    sessionStorage.removeItem("token")
+    localStorage.removeItem("token")
   }
 
   useEffect(() => {

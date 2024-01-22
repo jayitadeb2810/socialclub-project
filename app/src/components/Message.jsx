@@ -21,7 +21,7 @@ const Message = ({
         `/api/messages/${id}`,
         {
           headers: {
-            Authorization: sessionStorage.getItem("token"),
+            Authorization: localStorage.getItem("token"),
             "Content-Type": "application/json",
           },
         },
@@ -34,7 +34,7 @@ const Message = ({
           "/api/messages/" + currentChat?._id,
           {
             headers: {
-              Authorization: sessionStorage.getItem("token"),
+              Authorization: localStorage.getItem("token"),
               "Content-Type": "application/json",
             },
           },

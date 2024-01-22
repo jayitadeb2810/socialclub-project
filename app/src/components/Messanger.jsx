@@ -52,7 +52,7 @@ const Messenger = () => {
     })
   }, [user])
 
-  // console.log(onlineUsers)
+  console.log(onlineUsers)
 
   useEffect(() => {
     const getConversations = async () => {
@@ -61,7 +61,7 @@ const Messenger = () => {
           "/api/conversations/" + user._id,
           {
             headers: {
-              Authorization: sessionStorage.getItem("token"),
+              Authorization: localStorage.getItem("token"),
               "Content-Type": "application/json",
             },
           },
@@ -84,7 +84,7 @@ const Messenger = () => {
           "/api/messages/" + currentChat?._id,
           {
             headers: {
-              Authorization: sessionStorage.getItem("token"),
+              Authorization: localStorage.getItem("token"),
               "Content-Type": "application/json",
             },
           },
@@ -124,7 +124,7 @@ const Messenger = () => {
         },
         {
           headers: {
-            Authorization: sessionStorage.getItem("token"),
+            Authorization: localStorage.getItem("token"),
             "Content-Type": "application/json",
           },
         },
