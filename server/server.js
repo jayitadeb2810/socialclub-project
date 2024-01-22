@@ -13,8 +13,8 @@ const server = http.createServer(app)
 export const io = new Server(server, {
   cors: {
     origin: [
-      // "https://socialclub-application.onrender.com",
-      "http://localhost:5173",
+      "https://socialclub-application.onrender.com",
+      // "http://localhost:5173",
     ],
   },
 })
